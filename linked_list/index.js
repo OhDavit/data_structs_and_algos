@@ -12,9 +12,9 @@ class LinkedList {
 			this.root = new Node(data);
 			this.tail = this.root;
 			++this.size;
-		} else if (position > size) {
+		} else if (position > this.size) {
 			throw new Error('desired position is out of bound');
-		} else if (position === size){
+		} else if (position === this.size){
 			const newNode = new Node(data);
 			this.tail.next = newNode;
 			this.tail = newNode;
@@ -29,24 +29,36 @@ class LinkedList {
 	}
 
 	get(position) {
-		if(position > this.size || this.size === 0) {
+  	if(position > this.size || this.size === 0) {
 			return null;
 		}
+    
+    console.log(this)
 
-		let index = 1;
+		let index = 0;
 		let currentNode = this.root;
 
-		do() {
-	    currentNode = currentNode.next;  
+    while (index < position) {
+    currentNode = currentNode.next;  
 	    ++index;
-		} while(index < position)
+    }
 
 		return currentNode;
 	}
+ }
 
-class Node() {
+class Node {
 	constructor(data) {
 		this.next = null;
 		this.data = data;
 	}
 }
+
+const list = new LinkedList();
+
+list.insert(0, 4)
+list.insert(1, 3)
+list.insert(2, 2)
+console.log(list.size)
+
+
