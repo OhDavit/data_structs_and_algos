@@ -28,24 +28,46 @@ class LinkedList {
 		} 
 	}
 
+	removeAt(position) {
+		if(position > this.size) {
+			return false;
+		} else if(position === 0) {
+      const next = this.root.next;
+      this.root = null;//just in case
+      this.root = next;
+    } else if (position === this.size) {
+			this.tail = null; // just in case
+			this.tail = this.get(this.size - 1);
+			this.tail.next = null;
+		} else {
+       const nodeAtPosition = this.get(position - 1);
+       let nextNode = nodeAtPosition.next;
+       nodeAtPosition.next = nextNode.next;
+       nextNode = null;
+    }
+    
+    this.size--;
+		return true;
+	}
+
 	get(position) {
   	if(position > this.size || this.size === 0) {
 			return null;
+		} else if (position === this.size) {
+			return this.tail;
+		} else {
+			let index = 0;
+			let currentNode = this.root;
+
+    	while (index < position) {
+    		currentNode = currentNode.next;  
+	    	++index;
+    	}
+			
+			return currentNode;
 		}
-    
-    console.log(this)
-
-		let index = 0;
-		let currentNode = this.root;
-
-    while (index < position) {
-    currentNode = currentNode.next;  
-	    ++index;
-    }
-
-		return currentNode;
 	}
- }
+}
 
 class Node {
 	constructor(data) {
@@ -60,5 +82,6 @@ list.insert(0, 4)
 list.insert(1, 3)
 list.insert(2, 2)
 console.log(list.size)
-
-
+list.removeAt(0)
+list.removeAt(2)
+console.log(list.size)
