@@ -24,4 +24,8 @@ class Stack {
   clear() {
     this.list.length = 0;
   }
+
+  getLength() {
+    return this.list.length;
+  }
 }
