@@ -6,6 +6,9 @@ class LinkedList {
 		this.size = 0;
 		this.tail = null;
 	}
+	isEmpty() {
+		return !!this.size;
+	}
 
 	insert(position, data) {
 		if (this.size === 0) {

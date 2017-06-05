@@ -2,8 +2,8 @@
 
 class Node {
   constructor(data) {
-    this.left = null; // points to smaller subtrees
-    this.right = null; // points to bigger subtree
+    this.left = null; 
+    this.right = null;
     this.data = data;
   }
 }
