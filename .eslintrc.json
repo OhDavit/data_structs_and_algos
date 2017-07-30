@@ -1,0 +1,59 @@
+{
+  "extends": "eslint:recommended",
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module"
+  },
+  "env": {
+    "node": true,
+    "mocha": true
+  },
+  "plugins": [
+    "mocha"
+  ],
+  "globals": {
+    "angular": true,
+    "_": true,
+    "ct": true,
+    "moment": true,
+    "should": true,
+    "sinon": true,
+    "module": true,
+    "inject": true,
+    "Promise": true,
+    "Reflect": true
+  },
+  "rules": {
+    "space-before-blocks": ["error"],
+    "newline-before-return": ["error"],
+    "no-trailing-spaces": 2,
+    "eol-last": 2,
+    "indent": ["error", 2, {
+      "SwitchCase": 1,
+      "FunctionDeclaration": {"parameters": "first"},
+      "VariableDeclarator": {"var": 2, "let": 2, "const": 2}
+    }],
+    "block-spacing": ["error", "always"],
+    "no-multiple-empty-lines": ["error", {"max": 2}],
+    "no-multi-spaces": 2,
+    "brace-style": ["error", "1tbs", { "allowSingleLine": true }],
+    "comma-spacing": ["error", { "before": false, "after": true }],
+    "comma-style": ["error", "last"],
+    "comma-dangle": ["error", "never"],
+    "no-throw-literal": ["error"],
+    "no-unused-vars": ["error", { "args": "none" }],
+    "callback-return": ["error"],
+    "func-call-spacing": ["error", "never"],
+    "no-else-return": ["error"],
+    "curly": ["error"],
+    "one-var-declaration-per-line": ["error", "always"],
+    "key-spacing": ["error", { "afterColon": true, "mode": "strict"}],
+    "keyword-spacing": ["error", { "after": true, "before": true }],
+    "no-shadow": ["error", { "allow": ["done", "cb", "err"] }],
+    "no-var": ["error"],
+    "mocha/no-exclusive-tests": ["error"],
+    "mocha/handle-done-callback": ["error"],
+    "mocha/no-global-tests": ["error"],
+    "mocha/no-nested-tests": ["error"]
+  }
+}
