@@ -3,7 +3,7 @@
 const should = require('should');
 const {LinkedList} = require('../lib/linked_list');
 
-describe.only('Linked list', () => {
+describe('Linked list', () => {
   let linkedList = null;
 
   describe('Constructor', () => {
@@ -26,6 +26,10 @@ describe.only('Linked list', () => {
     it('should create property tail', () => {
       linkedList.should.have.ownProperty('tail');
     });
+  });
+
+  describe('get method', () => {
+
   });
 
   describe('insert method', () => {
@@ -58,7 +62,7 @@ describe.only('Linked list', () => {
         linkedList.insert(data);
       });
 
-      it('should set size to two', () => {
+      it.only('should set size to two', () => {
         linkedList.insert('secondTestData');
         console.log(linkedList);
         linkedList.size.should.equal(2);
