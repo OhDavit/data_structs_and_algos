@@ -3,7 +3,7 @@
 const should = require('should');
 const {LinkedList} = require('../lib/linked_list');
 
-describe.only('Linked list', () => {
+describe('Linked list', () => {
   let linkedList = null;
 
   describe('Constructor', () => {
