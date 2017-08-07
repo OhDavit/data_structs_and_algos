@@ -44,7 +44,7 @@ describe('Linked list', () => {
     });
 
     it('should return correct elements at corresponding position', () => {
-      for(let i = 0; i < 4; ++i) {
+      for (let i = 0; i < 4; ++i) {
         linkedList.get(i).data.should.equal(i + 1);
       }
 
@@ -91,7 +91,7 @@ describe('Linked list', () => {
     });
   });
 
-   describe('insertAt method', () => {
+  describe('insertAt method', () => {
     beforeEach(() => {
       linkedList = new LinkedList();
     });
