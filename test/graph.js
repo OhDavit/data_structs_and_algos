@@ -3,6 +3,9 @@
 const {DirectedGraph} = require('../lib/graph');
 const {Vertex} = require('../lib/graph');
 
+
+//TODO: write tests for 
+// constructore, cover null checkings
 describe('DirectedGraph', () => {
   let graph = null;
 
@@ -128,6 +131,63 @@ describe('DirectedGraph', () => {
       graph.addVertex(b);
       graph.addEdge(a, b).should.be.true();
       graph.addEdge(a, b).should.be.false();
+    });
+  });
+
+  describe('removeEdge', () => {
+    beforeEach(() => {
+      graph = new DirectedGraph();
+    });
+
+    it('should return true if edge is deleted', () => {
+      const a = new Vertex('a');
+      const b = new Vertex('b');
+      const c = new Vertex('c');
+      graph.addVertex(a);
+      graph.addVertex(b);
+      graph.addVertex(c);
+      graph.addEdge(a, b);
+      graph.addEdge(a, c);
+      graph.addEdge(b, c);
+      graph.removeEdge(a, c).should.be.true();
+    });
+
+    it('should return false if vertex is null', () => {
+      const a = new Vertex('a');
+      const b = new Vertex('b');
+      graph.addVertex(a);
+      graph.addVertex(b);
+      graph.addEdge(a, b);
+      graph.removeEdge(null, b).should.be.false();
+    });
+
+    it('should remove vertex from adjacentVertexes list if edge is deleted', () => {
+      const a = new Vertex('a');
+      const b = new Vertex('b');
+      const c = new Vertex('c');
+      graph.addVertex(a);
+      graph.addVertex(b);
+      graph.addVertex(c);
+      graph.addEdge(a, b);
+      graph.addEdge(a, c);
+      graph.addEdge(c, a);
+      graph.removeEdge(a, c);
+      a.adjacentVertexes.length.should.equal(1);
+      a.adjacentVertexes[0].data.should.equal('b');
+    });
+
+    it('should decrease the number of edges if edge is deleted', () => {
+      const a = new Vertex('a');
+      const b = new Vertex('b');
+      const c = new Vertex('c');
+      graph.addVertex(a);
+      graph.addVertex(b);
+      graph.addVertex(c);
+      graph.addEdge(a, b);
+      graph.addEdge(a, c);
+      graph.addEdge(b, c);
+      graph.removeEdge(a, c).should.be.true();
+      graph.numberOfEdges.should.equal(2);
     });
   });
 });
