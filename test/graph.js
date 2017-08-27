@@ -6,7 +6,7 @@ const {Vertex} = require('../lib/graph');
 
 //TODO: write tests for 
 // constructore, cover null checkings
-describe('DirectedGraph', () => {
+describe.only('DirectedGraph', () => {
   let graph = null;
 
   describe('addVertex', () => {
@@ -188,6 +188,47 @@ describe('DirectedGraph', () => {
       graph.addEdge(b, c);
       graph.removeEdge(a, c).should.be.true();
       graph.numberOfEdges.should.equal(2);
+    });
+  }); 
+
+  describe('isReachable', () => {
+    beforeEach(() => {
+      graph = new DirectedGraph();
+    });
+
+    it('should return true if there is a path', () => {
+      const a = new Vertex('a');
+      const b = new Vertex('b');
+      const c = new Vertex('c');
+      const d = new Vertex('d');
+      const k = new Vertex('k');
+      graph.addVertex(a);
+      graph.addVertex(b);
+      graph.addVertex(c);
+      graph.addVertex(d);
+      graph.addVertex(k);
+
+      graph.addEdge(a, b);
+      graph.addEdge(b, c);
+      graph.addEdge(c, k);
+      graph.isReachable(a, c).should.be.true();
+    });
+
+    it('should return true if there is no path', () => {
+      const a = new Vertex('a');
+      const b = new Vertex('b');
+      const c = new Vertex('c');
+      const d = new Vertex('d');
+      const k = new Vertex('k');
+      graph.addVertex(a);
+      graph.addVertex(b);
+      graph.addVertex(c);
+      graph.addVertex(d);
+      graph.addVertex(k);
+      graph.addEdge(a, b);
+      graph.addEdge(a, k);
+      graph.addEdge(c, k);
+      graph.isReachable(b, k).should.be.false();
     });
   });
 });
