@@ -50,8 +50,8 @@ describe('BinaryTree:', () => {
       const node = bTree.find(44, (a, b) => {
         if (a === b) return 0;
         if (a < b) return -1;
+        
         return 1;
-
       });
       should.exist(node);
       node.data.should.equal(44);

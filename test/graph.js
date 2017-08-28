@@ -1,12 +1,15 @@
 "use strict";
 
+const should = require('should');
+
+
 const {DirectedGraph} = require('../lib/graph');
 const {Vertex} = require('../lib/graph');
 
 
 //TODO: write tests for 
 // constructore, cover null checkings
-describe.only('DirectedGraph', () => {
+describe('DirectedGraph', () => {
   let graph = null;
 
   describe('addVertex', () => {

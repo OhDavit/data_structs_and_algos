@@ -16,5 +16,9 @@
     "mocha": "^2.3.3",
     "should": "^11.1.0",
     "sinon": "^2.3.2"
-  }
+  },
+  "main": "index.js",
+  "repository": "https://github.com/OhDavit/data_structs_and_algos.git",
+  "author": "davitohanyan@gmail.com <davitohanyan@gmail.com>",
+  "license": "MIT"
 }
