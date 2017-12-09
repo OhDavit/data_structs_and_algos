@@ -1,23 +1,29 @@
 {
-  "name": "datastruct",
+  "name": "dt-st",
   "version": "0.0.1",
-  "description": "",
+  "description": "Data structures implemented in JavaScript",
   "scripts": {
     "start": "node index.js",
+    "cjs": "rollup --format=cjs --sourcemap --output=dist/cjs.js ./lib/index.js",
+    "compile": "rollup -c rollup.config.js  --output=dist/bundle.js",
     "test": "env log:disable=true ./node_modules/.bin/mocha `find test -name '*.js' `",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "prepublish": "npm run compile"
   },
   "dependencies": {
     "david": "*",
     "uuid": "^3.1.0"
   },
   "devDependencies": {
+    "rollup": "^0.34.1",
+    "rollup-plugin-buble": "^0.12.1",
+    "rollup-plugin-node-resolve": "^1.7.0",
     "debug": "^2.2.0",
     "mocha": "^2.3.3",
     "should": "^11.1.0",
     "sinon": "^2.3.2"
   },
-  "main": "index.js",
+  "main": "./dist/bundle.js",
   "repository": "https://github.com/OhDavit/data_structs_and_algos.git",
   "author": "davitohanyan@gmail.com <davitohanyan@gmail.com>",
   "license": "MIT"

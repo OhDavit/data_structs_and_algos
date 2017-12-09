@@ -1,7 +1,7 @@
 "use strict";
 const should = require('should');
-
-const BinaryTree = require('../lib/binary_tree').BinaryTree;
+const dtst = require('../index').dtst;
+const BinaryTree = dtst.BinaryTree;
 
 describe('BinaryTree:', () => {
   let bTree = null;

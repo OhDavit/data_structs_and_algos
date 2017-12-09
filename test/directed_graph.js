@@ -1,10 +1,9 @@
 "use strict";
 
 const should = require('should');
-
-
-const {DirectedGraph} = require('../lib/graph');
-const {Vertex} = require('../lib/graph');
+const dtst = require('../index').dtst;
+const DirectedGraph = dtst.DirectedGraph;
+const Vertex = DirectedGraph.Vertex;
 
 
 //TODO: write tests for 
