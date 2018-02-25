@@ -1,8 +1,8 @@
 "use strict";
 
 const should = require('should');
-const dtst = require('../index').dtst;
-const DoublyLinkedList = dtst.DoublyLinkedList;
+const dslight = require('../index').dslight;
+const DoublyLinkedList = dslight.DoublyLinkedList;
 
 describe('Doubly linked list', () => {
 	let list = null;

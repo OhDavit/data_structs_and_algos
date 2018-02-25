@@ -1,7 +1,7 @@
 "use strict";
 
 const should = require('should');
-const DS = require('../index');
+const DS = require('../index').dslight;
 
 describe('Index:', () => {
 	it('should have Queue as a type of function', () => {

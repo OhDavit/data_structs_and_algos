@@ -1,8 +1,8 @@
 "use strict";
 
 const should = require('should');
-const dtst = require('../index').dtst;
-const Queue = dtst.Queue;
+const dslight = require('../index').dslight;
+const Queue = dslight.Queue;
 
 describe('Queue', () => {
 	let queue = null;

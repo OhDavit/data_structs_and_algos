@@ -1,8 +1,8 @@
 "use strict";
 
 const should = require('should');
-const dtst = require('../index').dtst;
-const Stack = dtst.Stack;
+const dslight = require('../index').dslight;
+const Stack = dslight.Stack;
 
 describe('Stack', () => {
 	let stack = null

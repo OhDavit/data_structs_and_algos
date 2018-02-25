@@ -1,8 +1,8 @@
 "use strict";
 
 const should = require('should');
-const dtst = require('../index').dtst;
-const DirectedGraph = dtst.DirectedGraph;
+const dslight = require('../index').dslight;
+const DirectedGraph = dslight.DirectedGraph;
 const Vertex = DirectedGraph.Vertex;
 
 
