@@ -1,11 +1,12 @@
-"use strict";
-
 // As array shift operation is expensive http://code.stephenmorley.org/javascript/queues/ approach is adopted
-class Queue {
+
+export class Queue {
+  list: any[];
+  private offset: number;
 
   constructor() {
     this.list = [];
-    this._offset = 0;
+    this.offset = 0;
   }
 
   clear() {
@@ -26,12 +27,12 @@ class Queue {
       return null;
     }
 
-    const item = this.list[this._offset];
-    this._offset++;
+    const item = this.list[this.offset];
+    this.offset++;
 
-    if (this._offset * 2 >= this.list.length) {
-      this.list = this.list.slice(this._offset);
-      this._offset = 0;
+    if (this.offset * 2 >= this.list.length) {
+      this.list = this.list.slice(this.offset);
+      this.offset = 0;
     }
 
     return item;
@@ -39,12 +40,10 @@ class Queue {
 
   // Retrieves the head of this queue
   peek() {
-    return (this.list.length > 0 ? this.list[this._offset] : null);
+    return (this.list.length > 0 ? this.list[this.offset] : null);
   }
 
   size() {
     return this.list.length;
   }
 }
-
-export { Queue };

@@ -1,13 +1,13 @@
 "use strict";
 const should = require('should');
 const dslight = require('../index').dslight;
-const BinaryTree = dslight.BinaryTree;
+const BinaryTree = dslight.BinarySearchTree;
 
-describe('BinaryTree:', () => {
+describe('BinarySearchTree:', () => {
   let bTree = null;
 
   beforeEach(() => {
-    bTree = new BinaryTree();
+    bTree = new BinarySearchTree();
   });
 
   describe('maxDepth method', () => {

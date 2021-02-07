@@ -1,14 +1,18 @@
-"use strict";
+
 // A singly linked list
 class LinkedList {
+  head: any;
+  tail: any;
+  private size: number;
+
   constructor() {
     this.head = null;
-    this._size = 0;
+    this.size = 0;
     this.tail = null;
   }
 
   getSize() {
-    return this._size;
+    return this.size;
   }
 
   getFirst() {
@@ -20,7 +24,7 @@ class LinkedList {
   }
 
   isEmpty() {
-    return !!this._size;
+    return !!this.size;
   }
 
   get(index) {
@@ -28,7 +32,7 @@ class LinkedList {
       return null;
     }
 
-    if (index > this._size - 1) {
+    if (index > this.size - 1) {
       return null;
     }
 
@@ -36,7 +40,7 @@ class LinkedList {
       return this.head;
     }
 
-    if (index === this._size - 1) {
+    if (index === this.size - 1) {
       return this.tail;
     }  
 
@@ -56,7 +60,7 @@ class LinkedList {
     let tmpNode = this.head;
 
     while (tmpNode) {
-      if (data === node.data) {
+      if (data === tmpNode.data) {
         return true;
       }
       tmpNode = tmpNode.next;
@@ -75,44 +79,44 @@ class LinkedList {
       throw new RangeError('index can not be negative')
     }
 
-    if (position > this._size) {
+    if (position > this.size) {
       throw new RangeError('index is out of bound');
     }
 
-    if (position > this._size) {
+    if (position > this.size) {
       return false;
     }
 
-    if (this._size === 0 || position === 0) {
+    if (this.size === 0 || position === 0) {
       this.addFirst(data);
-    } else if (position === this._size) {
+    } else if (position === this.size) {
       this.addLast(data);
     } else {
       const prevNode = this.get(position - 1);
-      const newNode = new Node(data);
+      const newNode = new DataNode(data);
       newNode.next = prevNode.next;
       prevNode.next = newNode;
-      ++this._size;
+      ++this.size;
     }
   }
 
   addLast(data) {
-    const newNode = new Node(data);
-    if (this._size === 0) {
+    const newNode = new DataNode(data);
+    if (this.size === 0) {
       this.head = newNode;
       this.tail = this.head;
-      ++this._size;
+      ++this.size;
     } else {
       this.tail.next = newNode;
       this.tail = newNode;
-      ++this._size;
+      ++this.size;
     }
   }
 
   addFirst(data) {
-    const newNode = new Node(data);
+    const newNode = new DataNode(data);
   
-    if (this._size === 0) {
+    if (this.size === 0) {
       this.head = newNode;
       this.tail = newNode;
       this.head.next = this.tail;
@@ -121,7 +125,7 @@ class LinkedList {
       this.head = newNode;
     }
 
-    this._size++;
+    this.size++;
   }
 
   removeAt(position) {
@@ -133,13 +137,13 @@ class LinkedList {
       throw new RangeError('position can not be negative')
     }
 
-    if (position >= this._size) {
+    if (position >= this.size) {
       throw new RangeError('position is out of bound');
     }
     
     if (position === 0) {
       return this.removeFirst();
-    } else if (position === this._size) {
+    } else if (position === this.size) {
       return this.removeLast();
     } else {
       const nodeAtPosition = this.get(position - 1);
@@ -148,7 +152,7 @@ class LinkedList {
       nextNode = null;
     }
 
-    this._size--;
+    this.size--;
     return true;
   }
 
@@ -164,7 +168,7 @@ class LinkedList {
       this.head = this.head.next;
     }
 
-    this._size--;
+    this.size--;
 
     return true;
   }
@@ -178,11 +182,11 @@ class LinkedList {
       this.head = null;
       this.tail = null;
     } else {
-      this.tail = this.get(this._size - 2);
+      this.tail = this.get(this.size - 2);
       this.tail.next = null;
     }
 
-    this._size--;
+    this.size--;
 
     return true;
   }
@@ -191,7 +195,7 @@ class LinkedList {
     const resultArray = [];
     let tmpIndex = 0;
     let tmpNode = this.head;
-    while (tmpIndex++ < this._size) {
+    while (tmpIndex++ < this.size) {
       resultArray.push(tmpNode.data);
       tmpNode = tmpNode.next;
     }
@@ -201,11 +205,11 @@ class LinkedList {
 
 }
 
-class Node {
+class DataNode {
+  next: DataNode | null;
+  data: any;
   constructor(data) {
     this.next = null;
     this.data = data;
   }
 }
-
-export { LinkedList };

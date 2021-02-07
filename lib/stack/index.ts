@@ -1,6 +1,5 @@
-"use strict";
-
-class Stack {
+export class Stack {
+  list: any[];
   constructor() {
     this.list = [];
   }
@@ -29,5 +28,3 @@ class Stack {
     return this.list.length;
   }
 }
-
-export {Stack};

@@ -1,6 +1,8 @@
-"use strict";
+export class DataNode {
+  left: DataNode | null;
+  right: DataNode | null;
+  data: any;
 
-class Node {
   constructor(data) {
     this.left = null;
     this.right = null;
@@ -10,14 +12,22 @@ class Node {
   isLeaf() {
     return !this.left && !this.right;
   }
+
+  
+  static calculateHeight(node: DataNode): number {
+    if (!node) {
+      return 0;
+    }
+
+    return 1 + Math.max(this.calculateHeight(node.left), this.calculateHeight(node.right));
+  }
 }
 
-class BinaryTree {
-  constructor() {
-    this.root = null;
-    this.numberOfNodes = 0;
-  }
-
+// Binary Search Tree is a Binary tree where 
+export class BinarySearchTree<T> {
+  root: DataNode | null = null;
+  numberOfNodes: number = 0;
+ 
   print() {
     this._printRecursively(this.root);
   }
@@ -84,7 +94,7 @@ class BinaryTree {
    */
   _insertRecursively(node, data) {
     if (!node) {
-      return new Node(data);
+      return new DataNode(data);
     }
 
     if (data <= node.data) {
@@ -105,7 +115,7 @@ class BinaryTree {
       return false;
     }
 
-    if (this.root.isLeaf() && this.root.compare(this.root.data, data) === 0) {
+    if (this.root.isLeaf() && compare(this.root.data, data) === 0) {
       this.root = null;
       this.numberOfNodes = 0;
       return true;
@@ -179,6 +189,33 @@ class BinaryTree {
     return this._findMinimum(node.left, node);
 
   }
-}
 
-export {BinaryTree};
+
+  static createFromSortedArray(array) {
+    array.sort();
+
+    const tree = new BinarySearchTree();
+
+    for(let i = array.length / 2; i < array.length; ++i) {
+      tree.insert(array[i]);
+    }
+
+    for(let i = 0; i < array.length / 2; ++i) {
+      tree.insert(array[i]);
+    }
+  }
+
+  public isBalanced(node: DataNode): boolean {
+    if (!node) {
+      return true;
+    }
+    const heightOfLeftBranch = DataNode.calculateHeight(node.left);
+    const heightOfRightBranch = DataNode.calculateHeight(node.right);
+
+    if (Math.abs(heightOfLeftBranch - heightOfRightBranch) > 1) {
+      return false;
+    }
+
+    return this.isBalanced(node.left) && this.isBalanced(node.right);
+  }
+}
